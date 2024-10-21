@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/my_potfolio_website/static/css/main.8180996f.css",
-    "main.js": "/my_potfolio_website/static/js/main.9cb23b86.js",
+    "main.css": "/my_potfolio_website/static/css/main.3fba849d.css",
+    "main.js": "/my_potfolio_website/static/js/main.754d9c2b.js",
     "static/js/415.4d6acbeb.chunk.js": "/my_potfolio_website/static/js/415.4d6acbeb.chunk.js",
     "static/js/787.1ed0c42c.chunk.js": "/my_potfolio_website/static/js/787.1ed0c42c.chunk.js",
     "static/media/leaf.png": "/my_potfolio_website/static/media/leaf.ff2616f664c8c0ceab91.png",
@@ -31,15 +31,15 @@
     "static/media/springboot.png": "/my_potfolio_website/static/media/springboot.1d16cc00606e5b7573f5.png",
     "static/media/eclipse.png": "/my_potfolio_website/static/media/eclipse.cdbdea813edbd56b86ab.png",
     "static/media/Jira.png": "/my_potfolio_website/static/media/Jira.e994a6f5b2233034abcc.png",
-    "static/media/pre.svg": "/my_potfolio_website/static/media/pre.170d54ae3d63b6d80559.svg",
+    "static/media/pre.svg": "/my_potfolio_website/static/media/pre.cfd5740322d733484658.svg",
     "index.html": "/my_potfolio_website/index.html",
-    "main.8180996f.css.map": "/my_potfolio_website/static/css/main.8180996f.css.map",
-    "main.9cb23b86.js.map": "/my_potfolio_website/static/js/main.9cb23b86.js.map",
+    "main.3fba849d.css.map": "/my_potfolio_website/static/css/main.3fba849d.css.map",
+    "main.754d9c2b.js.map": "/my_potfolio_website/static/js/main.754d9c2b.js.map",
     "415.4d6acbeb.chunk.js.map": "/my_potfolio_website/static/js/415.4d6acbeb.chunk.js.map",
     "787.1ed0c42c.chunk.js.map": "/my_potfolio_website/static/js/787.1ed0c42c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8180996f.css",
-    "static/js/main.9cb23b86.js"
+    "static/css/main.3fba849d.css",
+    "static/js/main.754d9c2b.js"
   ]
 }
