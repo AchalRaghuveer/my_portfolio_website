@@ -1,5 +1,6 @@
-import React from "react";
-import { Container, Row, Col, Tooltip, OverlayTrigger } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col, Tooltip, OverlayTrigger, Modal, Button, Form } from "react-bootstrap";
+import emailjs from '@emailjs/browser';
 import myImg from "../../Assets/me_img.jpg";
 import Tilt from "react-parallax-tilt";
 import {
@@ -10,13 +11,40 @@ import {
 import { FaLinkedinIn } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
-const tooltip = (
-  <Tooltip id="tooltip">
-    <strong>Holy guacamole!</strong> Check this info.
-  </Tooltip>
-);
-
 function Home2() {
+  const [showEmailForm, setShowEmailForm] = useState(false);
+  const [emailContent, setEmailContent] = useState({
+    subject: '',
+    message: '',
+  });
+
+  const handleShow = () => setShowEmailForm(true);
+  const handleClose = () => setShowEmailForm(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEmailContent((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.send('service_nb9je0h', 'template_gztqk5g', {
+      subject: emailContent.subject,
+      message: emailContent.message,
+      to_email: 'achalbr1997@gmail.com', // Change to the recipient email address
+    }, 'Nju7D8jZXKh9zfw2H')
+      .then((response) => {
+        console.log('Email sent successfully!', response.status, response.text);
+        setEmailContent({ subject: '', message: '' });
+        handleClose();
+      })
+      .catch((err) => console.error('Failed to send email. Error:', err));
+  };
+
   return (
     <Container fluid className="home-about-section" id="about">
       <Container>
@@ -41,17 +69,7 @@ function Home2() {
               <br />
               <br />
               I’m always exploring new technologies, whether it’s creating cloud solutions with
-              {/* <b className="purple">AWS</b> or
-              <i>
-                <b className="purple">
-                  {" "}
-                  Modern Javascript Library and Frameworks
-                </b>
-              </i> */}
               &nbsp; experimenting with data analysis and machine learning.
-              {/* <i>
-                <b className="purple"> React.js and Next.js</b>
-              </i> */}
               &nbsp; Let’s build something cool together!
             </p>
           </Col>
@@ -89,20 +107,13 @@ function Home2() {
                 </a>
               </li>
               <li className="social-icons">
-
-
                 <OverlayTrigger
-                  placement="top" // You can change this to "bottom", "left", or "right" as needed.
-                  overlay={
-                    <Tooltip id="tooltip-top">
-                      achalbr1997@gmail.com
-                    </Tooltip>
-                  }
+                  placement="top"
+                  overlay={<Tooltip id="tooltip-top">achalbr1997@gmail.com</Tooltip>}
                 >
                   <a
                     href="#"
-                    target="_blank"
-                    rel="noreferrer"
+                    onClick={(e) => { e.preventDefault(); handleShow(); }}
                     className="icon-colour home-social-icons"
                   >
                     <MdEmail />
@@ -113,7 +124,33 @@ function Home2() {
           </Col>
         </Row>
       </Container>
+
+      <Modal show={showEmailForm} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Send me an Email</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={sendEmail}>
+            <Form.Group controlId="emailMessage" className="mt-3">
+              <Form.Label>Message</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={4}
+                name="message"
+                value={emailContent.message}
+                onChange={handleChange}
+                placeholder="Write your message here with your email and i will reach out to you"
+                required
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit" className="mt-3">
+              Send Email
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
     </Container>
   );
 }
+
 export default Home2;
